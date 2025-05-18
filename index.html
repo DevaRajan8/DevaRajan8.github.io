@@ -4,12 +4,15 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Devarajan S - Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
     <style>
         :root {
             --background-color: #121212;
             --text-color: #e0e0e0;
             --accent-color: #00bcd4;
             --secondary-color: #424242;
+            --secondary-accent: #ff6f61;
         }
 
         * {
@@ -18,8 +21,12 @@
             box-sizing: border-box;
         }
 
+        html {
+            scroll-behavior: smooth;
+        }
+
         body {
-            font-family: 'Arial', sans-serif;
+            font-family: 'Roboto', sans-serif;
             color: var(--text-color);
             background-color: var(--background-color);
             line-height: 1.6;
@@ -48,6 +55,7 @@
             color: var(--text-color);
             text-decoration: none;
             font-weight: bold;
+            transition: color 0.3s ease;
         }
 
         nav ul li a:hover {
@@ -70,8 +78,8 @@
         }
 
         #home {
-            background: radial-gradient(circle at center, var(--accent-color), var(--background-color));
-            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100" viewBox="0 0 100 100"><circle cx="50" cy="50" r="2" fill="#fff" opacity="0.1"/></svg>');
+            background: linear-gradient(to right, #0f2027, #203a43, #2c5364);
+            background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><circle cx="50" cy="50" r="2" fill="#fff" opacity="0.1"/></svg>');
             background-repeat: repeat;
         }
 
@@ -83,8 +91,11 @@
         .hero-subtitle {
             font-size: 2rem;
             margin: 1rem 0;
-            animation: fadeInUp 1s ease-out 0.5s;
-            animation-fill-mode: both;
+            overflow: hidden;
+            border-right: .15em solid var(--secondary-accent);
+            white-space: nowrap;
+            letter-spacing: .15em;
+            animation: typing 3.5s steps(40, end), blink-caret .75s step-end infinite;
         }
 
         .cta-button {
@@ -94,8 +105,12 @@
             text-decoration: none;
             border-radius: 4px;
             font-weight: bold;
-            animation: fadeIn 1s ease-out 1s;
-            animation-fill-mode: both;
+            transition: all 0.3s ease;
+        }
+
+        .cta-button:hover {
+            background-color: var(--secondary-accent);
+            transform: scale(1.05);
         }
 
         #projects {
@@ -112,10 +127,18 @@
             border-radius: 8px;
             box-shadow: 0 4px 6px rgba(0,0,0,0.1);
             transition: transform 0.3s ease;
+            position: relative;
+            overflow: hidden;
         }
 
         .project-card:hover {
             transform: scale(1.05);
+        }
+
+        .project-card img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px 8px 0 0;
         }
 
         .project-card h3 {
@@ -123,9 +146,40 @@
             margin-bottom: 0.5rem;
         }
 
+        .project-details {
+            position: absolute;
+            bottom: -100%;
+            left: 0;
+            width: 100%;
+            background: var(--secondary-color);
+            padding: 1rem;
+            transition: bottom 0.3s ease;
+        }
+
+        .project-card:hover .project-details {
+            bottom: 0;
+        }
+
+        details {
+            width: 100%;
+            margin-top: 1rem;
+        }
+
+        summary {
+            cursor: pointer;
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+
         .skill-category {
             margin: 1rem 0;
             text-align: left;
+        }
+
+        .skill-category h3 {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
         }
 
         .skill-category ul {
@@ -139,6 +193,24 @@
             background-color: var(--secondary-color);
             padding: 0.5rem;
             border-radius: 4px;
+            color: var(--accent-color);
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background-color: var(--accent-color);
+            color: var(--background-color);
+            padding: 10px;
+            border-radius: 50%;
+            text-decoration: none;
+            font-size: 1.5rem;
+            transition: background-color 0.3s ease;
+        }
+
+        .back-to-top:hover {
+            background-color: var(--secondary-accent);
         }
 
         @keyframes fadeInDown {
@@ -146,14 +218,14 @@
             to { opacity: 1; transform: translateY(0); }
         }
 
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
+        @keyframes typing {
+            from { width: 0 }
+            to { width: 100% }
         }
 
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
+        @keyframes blink-caret {
+            from, to { border-color: transparent }
+            50% { border-color: var(--secondary-accent); }
         }
 
         @media (max-width: 768px) {
@@ -207,41 +279,89 @@
         <section id="projects">
             <h2>Projects</h2>
             <div class="project-card">
+                <img src="knowledge-graph.jpg" alt="Knowledge Graph Generator" loading="lazy">
                 <h3>Knowledge Graph Generator</h3>
                 <p>A tool to create a comprehensive knowledge graph of topics, concepts, and their relationships.</p>
-                <p><strong>Technologies:</strong> Python, SPARQL, Wikidata, Wikipedia API, MongoDB, Redis</p>
-                <a href="https://github.com/DevaRajan8/KnowledgeGraph_Generator">View on GitHub</a>
+                <div class="project-details">
+                    <p>Features include retrieving domain-specific topics from Wikidata, enriching with Wikipedia content, and storing in MongoDB with Redis caching.</p>
+                    <a href="https://github.com/DevaRajan8/KnowledgeGraph_Generator">View on GitHub</a>
+                </div>
+                <details>
+                    <summary>More Details</summary>
+                    <p>Technologies: Python, SPARQL, Wikidata, Wikipedia API, MongoDB, Redis</p>
+                    <p>Handles disambiguation, uses async processing, and provides visualization of concept relationships.</p>
+                </details>
             </div>
             <div class="project-card">
+                <img src="llm-hydrogen.jpg" alt="LLM for Hydrogen Storage" loading="lazy">
                 <h3>LLM for Hydrogen Storage</h3>
-                <p>Built a BART-based chatbot that ingests scientific papers on hydrogen storage and returns concise summaries.</p>
-                <p><strong>Technologies:</strong> BART, Python, NLP</p>
+                <p>Built a BART-based chatbot that summarizes scientific papers on hydrogen storage.</p>
+                <div class="project-details">
+                    <p>Extracts key material properties and improves research efficiency.</p>
+                </div>
+                <details>
+                    <summary>More Details</summary>
+                    <p>Technologies: BART, Python, NLP</p>
+                    <p>Enhances accuracy in summarizing complex scientific texts.</p>
+                </details>
             </div>
             <div class="project-card">
+                <img src="studytracker.jpg" alt="StudyTracker" loading="lazy">
                 <h3>StudyTracker</h3>
-                <p>Created a modular React + Flask productivity app with personalized study agents powered by LangGraph and CrewAI.</p>
-                <p><strong>Technologies:</strong> React, Flask, LangGraph, CrewAI</p>
+                <p>React + Flask app with personalized study agents using LangGraph and CrewAI.</p>
+                <div class="project-details">
+                    <p>Offers tailored study plans and reminders for students.</p>
+                </div>
+                <details>
+                    <summary>More Details</summary>
+                    <p>Technologies: React, Flask, LangGraph, CrewAI</p>
+                    <p>Modular design enhances student engagement.</p>
+                </details>
             </div>
             <div class="project-card">
+                <img src="resume-analyzer.jpg" alt="Resume Analyzer" loading="lazy">
                 <h3>Resume Analyzer</h3>
-                <p>Developed an AI-powered Streamlit app using spaCy and scikit-learn to parse CVs and match them against job descriptions.</p>
-                <p><strong>Technologies:</strong> Streamlit, spaCy, scikit-learn</p>
+                <p>AI-powered Streamlit app to parse CVs and match job descriptions.</p>
+                <div class="project-details">
+                    <p>Provides ATS-friendly suggestions and scoring.</p>
+                </div>
+                <details>
+                    <summary>More Details</summary>
+                    <p>Technologies: Streamlit, spaCy, scikit-learn</p>
+                    <p>Improves job application success rates.</p>
+                </details>
             </div>
             <div class="project-card">
+                <img src="nerd-dataset.jpg" alt="NERD Dataset" loading="lazy">
                 <h3>NERD - Named Entity Research Dataset</h3>
-                <p>Built an AI-powered Streamlit application that converts research papers into structured datasets using NER pipelines.</p>
-                <p><strong>Technologies:</strong> Streamlit, Ollama, Groq API</p>
+                <p>Streamlit app converting research papers into structured datasets.</p>
+                <div class="project-details">
+                    <p>Uses NER pipelines with Ollama and Groq API.</p>
+                </div>
+                <details>
+                    <summary>More Details</summary>
+                    <p>Technologies: Streamlit, Ollama, Groq API</p>
+                    <p>High-quality entity extraction for research.</p>
+                </details>
             </div>
             <div class="project-card">
+                <img src="skincheck.jpg" alt="SkinCheck" loading="lazy">
                 <h3>SkinCheck - Skin Lesion Classifier</h3>
-                <p>Developed a React Native app that classifies skin lesion images using custom deep-learning models.</p>
-                <p><strong>Technologies:</strong> React Native, Deep Learning</p>
+                <p>React Native app classifying skin lesions using deep learning.</p>
+                <div class="project-details">
+                    <p>Provides real-time melanoma predictions.</p>
+                </div>
+                <details>
+                    <summary>More Details</summary>
+                    <p>Technologies: React Native, Deep Learning</p>
+                    <p>Supports early skin cancer screening.</p>
+                </details>
             </div>
         </section>
         <section id="skills">
             <h2>Skills</h2>
             <div class="skill-category">
-                <h3>Programming Languages</h3>
+                <h3><i class="fas fa-code"></i> Programming Languages</h3>
                 <ul>
                     <li>Python</li>
                     <li>Java</li>
@@ -255,7 +375,7 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Machine Learning & AI</h3>
+                <h3><i class="fas fa-brain"></i> Machine Learning & AI</h3>
                 <ul>
                     <li>TensorFlow</li>
                     <li>PyTorch</li>
@@ -272,7 +392,7 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Databases</h3>
+                <h3><i class="fas fa-database"></i> Databases</h3>
                 <ul>
                     <li>ChromaDB</li>
                     <li>Neo4j</li>
@@ -285,7 +405,7 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>Web Development</h3>
+                <h3><i class="fas fa-globe"></i> Web Development</h3>
                 <ul>
                     <li>Django</li>
                     <li>Flask</li>
@@ -299,7 +419,7 @@
                 </ul>
             </div>
             <div class="skill-category">
-                <h3>DevOps</h3>
+                <h3><i class="fas fa-tools"></i> DevOps</h3>
                 <ul>
                     <li>Docker</li>
                     <li>CI/CD Pipelines</li>
@@ -316,15 +436,22 @@
         <section id="education">
             <h2>Education</h2>
             <p><strong>B.Tech in Artificial Intelligence and Data Science</strong><br>Amrita Vishwa Vidyapeetham<br>Aug 2023 - June 2027</p>
+            <p><strong>Certifications:</strong><br>Supervised Machine Learning (Coursera)<br>Generative AI and LLM Fundamentals (Google)</p>
         </section>
         <section id="contact">
             <h2>Contact</h2>
-            <p>Email: <a href="mailto:devarajans.officialsmail.com">devarajans.officialsmail.com</a></p>
-            <p>LinkedIn: <a href="#">Devarajan S</a></p>
+            <p>Email: <a href="mailto:devarajans.official@gmail.com">devarajans.official@gmail.com</a></p>
+            <p>LinkedIn: <a href="https://www.linkedin.com/in/devarajan-s">Devarajan S</a></p>
+            <p><a href="resume.pdf" download>Download Resume</a></p>
+            <div class="social-icons">
+                <a href="https://github.com/DevaRajan8"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/DevarajanS"><i class="fab fa-x"></i></a>
+            </div>
         </section>
     </main>
+    <a href="#home" class="back-to-top">↑ Top</a>
     <footer>
-        <p>&copy; 2025 Devarajan S. All rights reserved.</p>
+        <p>© 2025 Devarajan S. All rights reserved.</p>
     </footer>
 </body>
 </html>
