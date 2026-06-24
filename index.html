@@ -3,8 +3,37 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Devarajan S - Portfolio</title>
+    <title>Devarajan S - AI & Data Science Engineer</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;500;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+
     <style>
+      :root {
+        /* Clean Tech Color Palette */
+        --bg-base: #06060a; /* Deep space black */
+        --bg-surface: rgba(20, 22, 35, 0.7); /* Glass surface */
+        --bg-surface-hover: rgba(30, 33, 50, 0.85);
+        
+        --accent-primary: #00f0ff;   /* Cyber Cyan */
+        --accent-primary-glow: rgba(0, 240, 255, 0.3);
+        --accent-secondary: #a78bfa; /* Soft Tech Purple */
+        
+        /* High Contrast Typography Colors */
+        --text-heading: #ffffff;     /* Pure white for headings */
+        --text-main: #f1f5f9;        /* Off-white for general text */
+        --text-muted: #cbd5e1;       /* Light slate for paragraphs */
+        --text-darker: #94a3b8;      /* For dates and meta-info */
+        
+        --border-color: rgba(255, 255, 255, 0.08);
+        --border-hover: rgba(0, 240, 255, 0.4);
+        
+        /* Typography */
+        --font-sans: 'Inter', sans-serif;
+        --font-mono: 'Fira Code', monospace;
+      }
+
       * {
         margin: 0;
         padding: 0;
@@ -12,43 +41,62 @@
       }
 
       body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        background: #0a0a0a;
-        color: #e0e0e0;
-        line-height: 1.6;
+        font-family: var(--font-sans);
+        background-color: var(--bg-base);
+        color: var(--text-main);
+        line-height: 1.7;
         overflow-x: hidden;
+        
+        /* Fixed Tech Grid Background */
+        background-image: 
+          linear-gradient(rgba(0, 240, 255, 0.05) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(0, 240, 255, 0.05) 1px, transparent 1px);
+        background-size: 40px 40px;
+        background-position: center center;
+        background-attachment: fixed; /* Keeps the grid locked while scrolling */
       }
 
-      /* Dark theme gradient backgrounds */
-      .dark-gradient-1 {
-        background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
+      /* Animated Glowing Orbs Background - Subtle */
+      .bg-glow {
+        position: fixed;
+        width: 700px;
+        height: 700px;
+        background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, transparent 60%);
+        top: -150px;
+        left: -150px;
+        border-radius: 50%;
+        z-index: -1;
+        pointer-events: none;
       }
-
-      .dark-gradient-2 {
-        background: linear-gradient(135deg, #000000 0%, #434343 100%);
-      }
-
-      .dark-gradient-3 {
-        background: linear-gradient(135deg, #212121 0%, #424242 100%);
+      .bg-glow-2 {
+        position: fixed;
+        width: 900px;
+        height: 900px;
+        background: radial-gradient(circle, rgba(0, 240, 255, 0.1) 0%, transparent 60%);
+        bottom: -250px;
+        right: -250px;
+        border-radius: 50%;
+        z-index: -1;
+        pointer-events: none;
       }
 
       .container {
         max-width: 1200px;
         margin: 0 auto;
-        padding: 0 20px;
+        padding: 0 24px;
       }
 
-      /* Header with dark theme */
+      /* Header */
       header {
-        background: rgba(10, 10, 10, 0.95);
-        backdrop-filter: blur(10px);
+        background: rgba(6, 6, 10, 0.85);
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
         position: fixed;
         width: 100%;
         top: 0;
         z-index: 1000;
-        padding: 1rem 0;
-        box-shadow: 0 2px 20px rgba(0, 0, 0, 0.5);
-        border-bottom: 1px solid #333;
+        padding: 1.2rem 0;
+        border-bottom: 1px solid var(--border-color);
       }
 
       nav {
@@ -58,86 +106,52 @@
       }
 
       .logo {
+        font-family: var(--font-mono);
         font-size: 1.5rem;
-        font-weight: bold;
-        color: #d946ef;
-        text-shadow: 0 0 10px rgba(217, 70, 239, 0.3);
+        font-weight: 700;
+        color: var(--text-heading);
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+      }
+      
+      .logo::before {
+        content: ">_";
+        color: var(--accent-primary);
       }
 
       .nav-links {
         display: flex;
         list-style: none;
-        gap: 2rem;
+        gap: 2.5rem;
       }
 
       .nav-links a {
+        font-family: var(--font-mono);
+        font-size: 0.9rem;
         text-decoration: none;
-        color: #e0e0e0;
-        font-weight: 500;
+        color: var(--text-muted);
         transition: all 0.3s ease;
-        position: relative;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        font-weight: 500;
       }
 
-      .nav-links a:hover {
-        color: #d946ef;
-        text-shadow: 0 0 5px rgba(217, 70, 239, 0.5);
+      .nav-links a:hover, .nav-links a.active {
+        color: var(--accent-primary);
+        text-shadow: 0 0 10px var(--accent-primary-glow);
       }
 
-      .nav-links a::after {
-        content: "";
-        position: absolute;
-        bottom: -5px;
-        left: 0;
-        width: 0;
-        height: 2px;
-        background: linear-gradient(90deg, #d946ef, #a855f7);
-        transition: width 0.3s ease;
-      }
-
-      .nav-links a:hover::after {
-        width: 100%;
-      }
-
-      /* Hero Section with dark theme */
+      /* Hero Section */
       .hero {
-        height: 100vh;
+        min-height: 100vh;
         display: flex;
         align-items: center;
         justify-content: center;
         text-align: center;
-        background: linear-gradient(
-          135deg,
-          #000000 0%,
-          #1a1a1a 50%,
-          #000000 100%
-        );
         position: relative;
-        overflow: hidden;
-      }
-
-      .hero::before {
-        content: "";
-        position: absolute;
-        top: 0;
-        left: 0;
-        right: 0;
-        bottom: 0;
-        background:
-          radial-gradient(
-            circle at 20% 50%,
-            rgba(217, 70, 239, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 80% 20%,
-            rgba(168, 85, 247, 0.15) 0%,
-            transparent 50%
-          ),
-          radial-gradient(
-            circle at 40% 80%,
-            rgba(236, 72, 153, 0.15) 0%,
-            transparent 50%
-          );
+        padding-top: 80px;
       }
 
       .hero-content {
@@ -147,155 +161,151 @@
       }
 
       .hero h1 {
-        font-size: 4rem;
-        margin-bottom: 1rem;
-        font-weight: 700;
-        background: linear-gradient(45deg, #d946ef, #a855f7, #ec4899);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
-        text-shadow: 0 0 30px rgba(217, 70, 239, 0.3);
+        font-size: clamp(3.5rem, 7vw, 5.5rem);
+        margin-bottom: 1.5rem;
+        font-weight: 800;
+        letter-spacing: -2px;
+        color: var(--text-heading);
+        line-height: 1.1;
       }
 
       .hero .subtitle {
-        font-size: 1.5rem;
-        margin-bottom: 2rem;
-        color: #b0b0b0;
-        font-weight: 300;
+        font-family: var(--font-mono);
+        font-size: clamp(1.1rem, 2vw, 1.4rem);
+        margin-bottom: 3rem;
+        color: var(--accent-primary);
+        font-weight: 500;
+        display: inline-block;
+        padding: 8px 16px;
+        background: rgba(0, 240, 255, 0.05);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+        border-radius: 4px;
       }
 
       .hero .contact-info {
         display: flex;
         justify-content: center;
-        gap: 2rem;
-        margin-bottom: 3rem;
+        gap: 1.5rem;
+        margin-bottom: 3.5rem;
         flex-wrap: wrap;
       }
 
       .contact-item {
+        font-family: var(--font-mono);
+        font-size: 0.95rem;
         display: flex;
         align-items: center;
-        gap: 0.5rem;
-        color: #e0e0e0;
+        color: var(--text-muted);
         text-decoration: none;
         transition: all 0.3s ease;
-        padding: 0.6rem 1.2rem;
-        border-radius: 25px;
-        background: rgba(217, 70, 239, 0.08);
+        padding: 0.8rem 1.5rem;
+        border-radius: 6px;
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid var(--border-color);
         backdrop-filter: blur(10px);
-        border: 1.5px solid rgba(217, 70, 239, 0.2);
         font-weight: 500;
       }
 
       .contact-item:hover {
+        color: var(--text-heading);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: var(--text-muted);
         transform: translateY(-2px);
-        background: rgba(217, 70, 239, 0.1);
-        border-color: #d946ef;
-        box-shadow: 0 5px 15px rgba(217, 70, 239, 0.2);
       }
 
+      /* Clean Techy Transparent Button */
       .cta-button {
         display: inline-block;
-        background: linear-gradient(45deg, #d946ef, #a855f7);
-        color: #fff;
-        padding: 1rem 2rem;
+        font-family: var(--font-mono);
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        background: transparent;
+        color: var(--accent-primary);
+        padding: 1.2rem 2.5rem;
         text-decoration: none;
-        border-radius: 50px;
+        border-radius: 4px;
         font-weight: 600;
         transition: all 0.3s ease;
-        box-shadow: 0 4px 15px rgba(217, 70, 239, 0.3);
+        position: relative;
+        overflow: hidden;
+        border: 1px solid var(--accent-primary);
+        box-shadow: 0 0 15px rgba(0, 240, 255, 0.1);
+      }
+
+      .cta-button:hover {
+        background: rgba(0, 240, 255, 0.1);
+        box-shadow: 0 0 25px rgba(0, 240, 255, 0.3);
+        transform: translateY(-2px);
+      }
+
+      /* Sections */
+      .section {
+        padding: 6rem 0;
+        position: relative;
+      }
+
+      /* Crisp White Section Titles with Accent Dash */
+      .section-title {
+        font-size: 2.5rem;
+        margin-bottom: 4rem;
+        font-weight: 700;
+        color: var(--text-heading);
+        letter-spacing: -0.5px;
+        display: flex;
+        align-items: center;
+        gap: 15px;
+      }
+
+      .section-title::before {
+        content: "";
+        display: inline-block;
+        width: 40px;
+        height: 3px;
+        background: var(--accent-primary);
+        border-radius: 2px;
+        box-shadow: 0 0 10px var(--accent-primary-glow);
+      }
+
+      /* Global Card Style */
+      .glass-card {
+        background: var(--bg-surface);
+        border: 1px solid var(--border-color);
+        padding: 2.5rem;
+        border-radius: 12px;
+        backdrop-filter: blur(16px);
+        -webkit-backdrop-filter: blur(16px);
+        transition: all 0.3s ease;
         position: relative;
         overflow: hidden;
       }
 
-      .cta-button::before {
-        content: "";
+      .glass-card::before {
+        content: '';
         position: absolute;
-        top: 0;
-        left: -100%;
-        width: 100%;
-        height: 100%;
-        background: linear-gradient(
-          90deg,
-          transparent,
-          rgba(255, 255, 255, 0.2),
-          transparent
-        );
-        transition: left 0.5s ease;
+        top: 0; left: 0; right: 0;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--accent-primary), transparent);
+        opacity: 0;
+        transition: opacity 0.4s ease;
       }
 
-      .cta-button:hover::before {
-        left: 100%;
+      .glass-card:hover {
+        transform: translateY(-5px);
+        background: var(--bg-surface-hover);
+        border-color: rgba(0, 240, 255, 0.3);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
       }
 
-      .cta-button:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(217, 70, 239, 0.4);
+      .glass-card:hover::before {
+        opacity: 1;
       }
 
-      /* Section Styles with dark theme */
-      .section {
-        padding: 5rem 0;
-        background: #0a0a0a;
-        position: relative;
-      }
-
-      .section:nth-child(even) {
-        background: linear-gradient(135deg, #121212 0%, #1a1a1a 100%);
-      }
-
-      .section-title {
-        text-align: center;
-        font-size: 2.5rem;
-        margin-bottom: 3rem;
-        color: #e0e0e0;
-        position: relative;
-        font-weight: 700;
-      }
-
-      .section-title::after {
-        content: "";
-        position: absolute;
-        bottom: -10px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 80px;
-        height: 3px;
-        background: linear-gradient(45deg, #d946ef, #a855f7);
-        border-radius: 2px;
-      }
-
-      /* Education Section */
-      .education-card {
-        background: rgba(25, 25, 35, 0.6);
-        color: #e0e0e0;
-        padding: 2.5rem 2rem;
-        border-radius: 18px;
-        text-align: center;
-        box-shadow: 0 8px 32px rgba(217, 70, 239, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1.5px solid rgba(217, 70, 239, 0.12);
-        backdrop-filter: blur(15px);
-      }
-
-      .education-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 45px rgba(217, 70, 239, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        border-color: rgba(217, 70, 239, 0.25);
-        background: rgba(25, 25, 35, 0.75);
-      }
-
-      .education-card h3 {
-        font-size: 1.3rem;
-        margin-bottom: 1rem;
-        color: #d946ef;
-        font-weight: 700;
-        letter-spacing: -0.3px;
-      }
-
-      .education-card p {
-        font-size: 1.1rem;
-        color: #b0b0b0;
+      /* About Section */
+      .about-text {
+        font-size: 1.15rem;
+        color: var(--text-muted);
+        max-width: 900px;
+        line-height: 1.8;
       }
 
       /* Skills Section */
@@ -305,101 +315,70 @@
         gap: 2rem;
       }
 
-      .skill-category {
-        background: rgba(25, 25, 35, 0.6);
-        padding: 2rem;
-        border-radius: 18px;
-        box-shadow: 0 8px 32px rgba(217, 70, 239, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1.5px solid rgba(217, 70, 239, 0.12);
-        backdrop-filter: blur(15px);
-      }
-
-      .skill-category:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 45px rgba(217, 70, 239, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        border-color: rgba(217, 70, 239, 0.25);
-        background: rgba(25, 25, 35, 0.75);
-      }
-
       .skill-category h3 {
-        color: #d946ef;
-        margin-bottom: 1.2rem;
+        color: var(--text-heading);
+        margin-bottom: 1.5rem;
         font-size: 1.2rem;
-        font-weight: 700;
-        letter-spacing: -0.2px;
+        font-family: var(--font-mono);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+      
+      .skill-category h3::before {
+        content: "/>";
+        color: var(--accent-secondary);
       }
 
       .skill-tags {
         display: flex;
         flex-wrap: wrap;
-        gap: 0.5rem;
+        gap: 0.8rem;
       }
 
       .skill-tag {
-        background: linear-gradient(
-          45deg,
-          rgba(217, 70, 239, 0.15),
-          rgba(168, 85, 247, 0.15)
-        );
-        color: #e0e0e0;
-        padding: 0.5rem 1rem;
-        border-radius: 25px;
-        font-size: 0.9rem;
-        font-weight: 500;
+        font-family: var(--font-mono);
+        background: rgba(255, 255, 255, 0.03);
+        color: var(--text-muted);
+        padding: 0.6rem 1rem;
+        border-radius: 4px;
+        font-size: 0.85rem;
+        border: 1px solid var(--border-color);
         transition: all 0.3s ease;
-        border: 1px solid rgba(217, 70, 239, 0.3);
       }
 
       .skill-tag:hover {
-        transform: scale(1.05);
-        background: linear-gradient(
-          45deg,
-          rgba(217, 70, 239, 0.25),
-          rgba(168, 85, 247, 0.25)
-        );
-        box-shadow: 0 3px 10px rgba(217, 70, 239, 0.3);
-        border-color: rgba(217, 70, 239, 0.6);
+        color: var(--text-heading);
+        border-color: var(--accent-primary);
+        background: rgba(0, 240, 255, 0.05);
       }
 
       /* Experience Section */
-      .experience-card {
-        background: rgba(25, 25, 35, 0.6);
-        padding: 2.2rem;
-        border-radius: 18px;
-        box-shadow: 0 8px 32px rgba(217, 70, 239, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        margin-bottom: 2rem;
-        border: 1.5px solid rgba(217, 70, 239, 0.12);
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(15px);
-      }
-
-      .experience-card:hover {
-        transform: translateY(-6px);
-        box-shadow: 0 15px 45px rgba(217, 70, 239, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        border-color: rgba(217, 70, 239, 0.25);
-        background: rgba(25, 25, 35, 0.75);
-      }
-
       .experience-card h3 {
-        color: #d946ef;
+        color: var(--text-heading);
+        font-size: 1.4rem;
         margin-bottom: 0.5rem;
       }
 
       .experience-card .company {
-        color: #b0b0b0;
-        font-weight: 600;
+        color: var(--accent-primary);
+        font-family: var(--font-mono);
+        font-size: 1rem;
         margin-bottom: 0.5rem;
+        font-weight: 500;
       }
 
       .experience-card .date {
-        color: #888;
-        font-size: 0.9rem;
-        margin-bottom: 1rem;
+        color: var(--text-darker);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        margin-bottom: 1.5rem;
       }
 
       .experience-card p {
-        color: #e0e0e0;
+        color: var(--text-muted);
+        font-size: 1rem;
+        line-height: 1.7;
       }
 
       /* Projects Section */
@@ -410,59 +389,152 @@
       }
 
       .project-card {
-        background: rgba(25, 25, 35, 0.6);
-        backdrop-filter: blur(15px);
-        border-radius: 20px;
-        overflow: hidden;
-        box-shadow: 0 8px 32px rgba(217, 70, 239, 0.1), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
-        border: 1.5px solid rgba(217, 70, 239, 0.15);
-        position: relative;
-      }
-
-      .project-card:hover {
-        transform: translateY(-8px);
-        box-shadow: 0 20px 50px rgba(217, 70, 239, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.1);
-        border-color: rgba(217, 70, 239, 0.35);
-        background: rgba(25, 25, 35, 0.75);
+        padding: 0;
+        display: flex;
+        flex-direction: column;
       }
 
       .project-header {
-        background: linear-gradient(135deg, rgba(217, 70, 239, 0.15), rgba(168, 85, 247, 0.1));
-        padding: 2rem 2rem 1.5rem 2rem;
-        border-bottom: 1.5px solid rgba(217, 70, 239, 0.15);
-        backdrop-filter: blur(10px);
+        padding: 2rem 2rem 1.5rem;
+        border-bottom: 1px solid var(--border-color);
+        background: rgba(255, 255, 255, 0.01);
       }
 
       .project-header h3 {
-        margin-bottom: 0.8rem;
-        font-weight: 700;
-        color: #e0e0e0;
-        font-size: 1.35rem;
-        letter-spacing: -0.3px;
-        background: linear-gradient(135deg, #d946ef, #ec4899);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-        background-clip: text;
+        font-size: 1.3rem;
+        color: var(--text-heading);
+        margin-bottom: 0.5rem;
       }
 
       .project-date {
-        font-size: 0.85rem;
-        font-weight: 600;
-        color: #d946ef;
-        letter-spacing: 0.5px;
-        text-transform: uppercase;
+        font-family: var(--font-mono);
+        font-size: 0.8rem;
+        color: var(--text-darker);
       }
 
       .project-content {
         padding: 2rem;
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
       }
 
       .project-content p {
-        line-height: 1.7;
-        color: #c0c0c0;
+        color: var(--text-muted);
         font-size: 0.95rem;
+        line-height: 1.6;
         margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .project-tech-tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        margin-bottom: 2rem;
+      }
+
+      .project-tech-tag {
+        font-family: var(--font-mono);
+        color: var(--accent-secondary);
+        font-size: 0.75rem;
+        padding: 0.3rem 0.8rem;
+        background: rgba(167, 139, 250, 0.1);
+        border: 1px solid rgba(167, 139, 250, 0.2);
+        border-radius: 4px;
+      }
+
+      .project-github-link {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.5rem;
+        color: var(--text-main);
+        font-family: var(--font-mono);
+        font-size: 0.85rem;
+        text-decoration: none;
+        transition: all 0.3s ease;
+        padding: 0.8rem 1.2rem;
+        border: 1px solid var(--border-color);
+        border-radius: 4px;
+        background: rgba(255, 255, 255, 0.02);
+        align-self: flex-start;
+      }
+
+      .project-github-link:hover {
+        border-color: var(--accent-primary);
+        color: var(--accent-primary);
+      }
+
+      .project-github-link svg {
+        width: 18px;
+        height: 18px;
+        fill: currentColor;
+      }
+
+      /* Publications Section */
+      .publication-card {
+        padding: 2.5rem;
+      }
+      
+      .pub-header {
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+        margin-bottom: 1.5rem;
+        flex-wrap: wrap;
+      }
+
+      .pub-badge {
+        font-family: var(--font-mono);
+        font-size: 0.75rem;
+        padding: 0.4rem 0.8rem;
+        border-radius: 4px;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        font-weight: 600;
+      }
+
+      .pub-venue {
+        background: rgba(167, 139, 250, 0.15);
+        color: #c4b5fd;
+        border: 1px solid rgba(167, 139, 250, 0.3);
+      }
+
+      .pub-year {
+        background: rgba(255, 255, 255, 0.05);
+        color: var(--text-muted);
+        border: 1px solid var(--border-color);
+      }
+
+      .pub-status {
+        background: rgba(0, 240, 255, 0.1);
+        color: var(--accent-primary);
+        border: 1px solid rgba(0, 240, 255, 0.3);
+      }
+
+      .publication-card h3 {
+        font-size: 1.4rem;
+        color: var(--text-heading);
+        margin-bottom: 1rem;
+        line-height: 1.4;
+      }
+
+      .pub-authors {
+        color: var(--text-darker);
+        font-size: 1rem;
+        margin-bottom: 1.5rem;
+      }
+      
+      .pub-authors strong {
+        color: var(--text-muted);
+        font-weight: 500;
+      }
+
+      .pub-desc {
+        color: var(--text-muted);
+        font-size: 0.95rem;
+        margin-bottom: 2rem;
+        line-height: 1.7;
       }
 
       /* Courses Section */
@@ -472,40 +544,26 @@
         gap: 1.5rem;
       }
 
-      .course-item {
-        background: rgba(25, 25, 35, 0.6);
-        padding: 1.8rem;
-        border-radius: 15px;
-        box-shadow: 0 8px 32px rgba(217, 70, 239, 0.08), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        border: 1.5px solid rgba(217, 70, 239, 0.12);
-        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        backdrop-filter: blur(10px);
-      }
-
-      .course-item:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 12px 40px rgba(217, 70, 239, 0.15), inset 0 1px 0 rgba(255, 255, 255, 0.05);
-        border-color: rgba(217, 70, 239, 0.25);
-        background: rgba(25, 25, 35, 0.75);
-      }
-
       .course-item h4 {
-        color: #e0e0e0;
+        color: var(--text-heading);
         margin-bottom: 0.5rem;
+        font-size: 1.1rem;
       }
 
       .course-provider {
-        color: #888;
-        font-size: 0.9rem;
+        font-family: var(--font-mono);
+        color: var(--accent-secondary);
+        font-size: 0.85rem;
       }
 
       /* Footer */
       footer {
-        background: linear-gradient(135deg, #000000, #1a1a1a);
-        color: #e0e0e0;
+        border-top: 1px solid var(--border-color);
+        background: rgba(6, 6, 10, 0.9);
+        color: var(--text-muted);
         text-align: center;
-        padding: 3rem 0;
-        border-top: 1px solid #333;
+        padding: 4rem 0;
+        margin-top: 4rem;
       }
 
       .footer-content {
@@ -513,54 +571,31 @@
         justify-content: center;
         gap: 2rem;
         margin-bottom: 2rem;
+        flex-wrap: wrap;
       }
 
       .footer-link {
-        color: #e0e0e0;
+        font-family: var(--font-mono);
+        color: var(--text-muted);
         text-decoration: none;
-        transition: all 0.3s ease;
-        padding: 0.6rem 1.2rem;
-        border-radius: 25px;
-        background: rgba(217, 70, 239, 0.08);
-        backdrop-filter: blur(10px);
-        border: 1.5px solid rgba(217, 70, 239, 0.2);
-        font-weight: 500;
+        transition: color 0.3s ease;
+        font-size: 0.9rem;
       }
 
       .footer-link:hover {
-        color: #d946ef;
-        background: rgba(217, 70, 239, 0.15);
-        border-color: rgba(217, 70, 239, 0.5);
-        transform: translateY(-2px);
-        box-shadow: 0 4px 12px rgba(217, 70, 239, 0.25);
+        color: var(--accent-primary);
       }
 
       /* Animations */
       @keyframes fadeInUp {
-        from {
-          opacity: 0;
-          transform: translateY(30px);
-        }
-        to {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
-
-      @keyframes glow {
-        0%,
-        100% {
-          text-shadow: 0 0 5px rgba(217, 70, 239, 0.5);
-        }
-        50% {
-          text-shadow: 0 0 20px rgba(217, 70, 239, 0.8);
-        }
+        from { opacity: 0; transform: translateY(20px); }
+        to { opacity: 1; transform: translateY(0); }
       }
 
       .animate-on-scroll {
         opacity: 0;
         transform: translateY(30px);
-        transition: all 0.6s ease;
+        transition: opacity 0.8s ease, transform 0.8s cubic-bezier(0.4, 0, 0.2, 1);
       }
 
       .animate-on-scroll.animate {
@@ -568,163 +603,60 @@
         transform: translateY(0);
       }
 
-      /* Particle animation background */
+      /* Particles */
       .particles {
         position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        height: 100%;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
         pointer-events: none;
         z-index: -1;
       }
 
       .particle {
         position: absolute;
-        width: 2px;
-        height: 2px;
-        background: #d946ef;
+        width: 2px; height: 2px;
+        background: var(--text-muted);
         border-radius: 50%;
-        animation: particle-float 15s infinite linear;
+        opacity: 0.3;
+        animation: particle-float 20s infinite linear;
       }
 
       @keyframes particle-float {
-        0% {
-          transform: translateY(100vh) rotate(0deg);
-          opacity: 0;
-        }
-        10% {
-          opacity: 1;
-        }
-        90% {
-          opacity: 1;
-        }
-        100% {
-          transform: translateY(-100vh) rotate(360deg);
-          opacity: 0;
-        }
+        0% { transform: translateY(100vh) rotate(0deg); opacity: 0; }
+        10% { opacity: 0.6; }
+        90% { opacity: 0.6; }
+        100% { transform: translateY(-100vh) rotate(360deg); opacity: 0; }
       }
 
-      /* Responsive Design */
+      /* Responsive */
       @media (max-width: 768px) {
-        .nav-links {
-          display: none;
-        }
-
-        .hero h1 {
-          font-size: 2.5rem;
-        }
-
-        .hero .subtitle {
-          font-size: 1.2rem;
-        }
-
-        .hero .contact-info {
-          flex-direction: column;
-          gap: 1rem;
-        }
-
-        .skills-grid {
-          grid-template-columns: 1fr;
-        }
-
-        .projects-grid {
-          grid-template-columns: 1fr;
-        }
+        .nav-links { display: none; }
+        .hero .contact-info { flex-direction: column; gap: 1rem; }
+        .section-title { font-size: 2rem; }
       }
 
-      /* Dark theme scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-
-      ::-webkit-scrollbar-track {
-        background: #1a1a1a;
-      }
-
-      ::-webkit-scrollbar-thumb {
-        background: linear-gradient(45deg, #d946ef, #a855f7);
-        border-radius: 4px;
-      }
-
-      ::-webkit-scrollbar-thumb:hover {
-        background: linear-gradient(45deg, #a855f7, #d946ef);
-      }
-
-      /* Technology tags */
-      .project-tech-tags {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-        margin-bottom: 1.5rem;
-      }
-
-      .project-tech-tag {
-        background: rgba(217, 70, 239, 0.12);
-        color: #d946ef;
-        padding: 0.4rem 0.9rem;
-        border-radius: 15px;
-        font-size: 0.8rem;
-        font-weight: 600;
-        border: 1.5px solid rgba(217, 70, 239, 0.35);
-        transition: all 0.3s ease;
-        backdrop-filter: blur(8px);
-      }
-
-      .project-tech-tag:hover {
-        background: rgba(217, 70, 239, 0.2);
-        border-color: rgba(217, 70, 239, 0.6);
-        transform: translateY(-2px) scale(1.05);
-        box-shadow: 0 4px 12px rgba(217, 70, 239, 0.25);
-      }
-
-      /* GitHub link styling */
-      .project-github-link {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.5rem;
-        color: #d0d0d0;
-        text-decoration: none;
-        font-size: 0.85rem;
-        transition: all 0.3s ease;
-        padding: 0.6rem 1.2rem;
-        border-radius: 25px;
-        background: rgba(217, 70, 239, 0.08);
-        border: 1.5px solid rgba(217, 70, 239, 0.25);
-        font-weight: 600;
-        backdrop-filter: blur(8px);
-      }
-
-      .project-github-link:hover {
-        color: #d946ef;
-        background: rgba(217, 70, 239, 0.15);
-        border-color: rgba(217, 70, 239, 0.5);
-        transform: translateY(-3px);
-        box-shadow: 0 6px 16px rgba(217, 70, 239, 0.25);
-      }
-
-      .project-github-link svg {
-        width: 16px;
-        height: 16px;
-        fill: currentColor;
-      }
+      ::-webkit-scrollbar { width: 8px; }
+      ::-webkit-scrollbar-track { background: var(--bg-base); }
+      ::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.15); border-radius: 4px; }
+      ::-webkit-scrollbar-thumb:hover { background: rgba(0, 240, 255, 0.4); }
     </style>
   </head>
   <body>
-    <!-- Particle Background -->
+    <div class="bg-glow"></div>
+    <div class="bg-glow-2"></div>
     <div class="particles" id="particles"></div>
 
     <header>
       <nav class="container">
-        <div class="logo">Devarajan S</div>
+        <div class="logo">Devarajan_S</div>
         <ul class="nav-links">
           <li><a href="#home">Home</a></li>
           <li><a href="#about">About</a></li>
           <li><a href="#skills">Skills</a></li>
           <li><a href="#experience">Experience</a></li>
           <li><a href="#projects">Projects</a></li>
+          <li><a href="#publications">Publications</a></li>
           <li><a href="#education">Education</a></li>
-          <li><a href="#contact">Contact</a></li>
         </ul>
       </nav>
     </header>
@@ -734,40 +666,20 @@
         <h1>Devarajan S</h1>
         <p class="subtitle">AI & Data Science Engineer</p>
         <div class="contact-info">
-          <a href="mailto:devarajan8.official@gmail.com" class="contact-item">
-            <span></span>
-            <span>devarajan8.official@gmail.com</span>
-          </a>
-          <a href="tel:8807926810" class="contact-item">
-            <span></span>
-            <span>8807926810</span>
-          </a>
-          <a href="https://github.com/DevaRajan8" class="contact-item">
-            <span></span>
-            <span>GitHub</span>
-          </a>
-          <a href="https://www.linkedin.com/in/devarajan8" class="contact-item">
-            <span></span>
-            <span>LinkedIn</span>
-          </a>
+          <a href="mailto:devarajan8.official@gmail.com" class="contact-item">devarajan8.official@gmail.com</a>
+          <a href="tel:8807926810" class="contact-item">8807926810</a>
+          <a href="https://github.com/DevaRajan8" class="contact-item">GitHub</a>
+          <a href="https://www.linkedin.com/in/devarajan8" class="contact-item">LinkedIn</a>
         </div>
-        <a href="#projects" class="cta-button">Explore My Work</a>
+        <a href="#projects" class="cta-button">Initialize Portfolio</a>
       </div>
     </section>
 
     <section id="about" class="section">
       <div class="container">
-        <h2 class="section-title animate-on-scroll">About Me</h2>
-        <div class="animate-on-scroll">
-          <p
-            style="
-              text-align: center;
-              font-size: 1.1rem;
-              color: #b0b0b0;
-              max-width: 800px;
-              margin: 0 auto;
-            "
-          >
+        <h2 class="section-title animate-on-scroll">About_Me</h2>
+        <div class="glass-card animate-on-scroll">
+          <p class="about-text">
             Passionate AI & Data Science student with expertise in machine
             learning, deep learning, and full-stack development. Currently
             pursuing B.Tech in Artificial Intelligence and Data Science at
@@ -781,11 +693,11 @@
     <section id="education" class="section">
       <div class="container">
         <h2 class="section-title animate-on-scroll">Education</h2>
-        <div class="animate-on-scroll">
-          <div class="education-card">
+        <div class="glass-card animate-on-scroll">
+          <div class="experience-card">
             <h3>B.Tech in Artificial Intelligence and Data Science</h3>
-            <p>Amrita Vishwa Vidyapeetham</p>
-            <p>Aug 2023 – Aug 2027</p>
+            <p class="company">Amrita Vishwa Vidyapeetham</p>
+            <p class="date">Aug 2023 – Aug 2027</p>
           </div>
         </div>
       </div>
@@ -793,27 +705,24 @@
 
     <section id="skills" class="section">
       <div class="container">
-        <h2 class="section-title animate-on-scroll">Technical Skills</h2>
+        <h2 class="section-title animate-on-scroll">Tech_Stack</h2>
         <div class="skills-grid">
-          <div class="skill-category animate-on-scroll">
-            <h3>Programming Languages</h3>
+          <div class="glass-card skill-category animate-on-scroll">
+            <h3>Programming</h3>
             <div class="skill-tags">
               <span class="skill-tag">Python</span>
               <span class="skill-tag">Java</span>
-              <span class="skill-tag">C</span>
               <span class="skill-tag">C++</span>
               <span class="skill-tag">SQL</span>
               <span class="skill-tag">JavaScript</span>
               <span class="skill-tag">Dart</span>
-              <span class="skill-tag">HTML</span>
-              <span class="skill-tag">CSS</span>
               <span class="skill-tag">MATLAB</span>
               <span class="skill-tag">SCALA</span>
             </div>
           </div>
 
-          <div class="skill-category animate-on-scroll">
-            <h3>Machine Learning & AI</h3>
+          <div class="glass-card skill-category animate-on-scroll">
+            <h3>AI & Machine Learning</h3>
             <div class="skill-tags">
               <span class="skill-tag">TensorFlow</span>
               <span class="skill-tag">PyTorch</span>
@@ -823,22 +732,18 @@
               <span class="skill-tag">Haystack</span>
               <span class="skill-tag">LORA</span>
               <span class="skill-tag">RAG</span>
-              <span class="skill-tag">Autogen</span>
               <span class="skill-tag">CrewAI</span>
-              <span class="skill-tag">SnowFlake</span>
               <span class="skill-tag">Quantum ML</span>
             </div>
           </div>
 
-          <div class="skill-category animate-on-scroll">
+          <div class="glass-card skill-category animate-on-scroll">
             <h3>Databases</h3>
             <div class="skill-tags">
               <span class="skill-tag">ChromaDB</span>
               <span class="skill-tag">Neo4j</span>
               <span class="skill-tag">MongoDB</span>
               <span class="skill-tag">Pinecone</span>
-              <span class="skill-tag">Redis</span>
-              <span class="skill-tag">Firebase</span>
               <span class="skill-tag">PostgreSQL</span>
               <span class="skill-tag">Faiss</span>
               <span class="skill-tag">Qdrant</span>
@@ -846,46 +751,17 @@
             </div>
           </div>
 
-          <div class="skill-category animate-on-scroll">
-            <h3>Web Development</h3>
+          <div class="glass-card skill-category animate-on-scroll">
+            <h3>Development & Cloud</h3>
             <div class="skill-tags">
               <span class="skill-tag">Django</span>
-              <span class="skill-tag">Flask</span>
               <span class="skill-tag">FastAPI</span>
               <span class="skill-tag">React</span>
-              <span class="skill-tag">React Native</span>
-              <span class="skill-tag">Bootstrap</span>
-              <span class="skill-tag">React Js</span>
-              <span class="skill-tag">Tailwind CSS</span>
-              <span class="skill-tag">REST API</span>
-              <span class="skill-tag">GraphQL</span>
-            </div>
-          </div>
-
-          <div class="skill-category animate-on-scroll">
-            <h3>DevOps & Cloud</h3>
-            <div class="skill-tags">
               <span class="skill-tag">Docker</span>
               <span class="skill-tag">Kubernetes</span>
               <span class="skill-tag">CI/CD</span>
-              <span class="skill-tag">Apache Airflow</span>
-              <span class="skill-tag">Jenkins</span>
               <span class="skill-tag">AWS</span>
-              <span class="skill-tag">Google Cloud</span>
-            </div>
-          </div>
-
-          <div class="skill-category animate-on-scroll">
-            <h3>Other Tools</h3>
-            <div class="skill-tags">
-              <span class="skill-tag">LangGraph</span>
-              <span class="skill-tag">Unsloth</span>
               <span class="skill-tag">Git</span>
-              <span class="skill-tag">Postman</span>
-              <span class="skill-tag">Selenium</span>
-              <span class="skill-tag">Spark</span>
-              <span class="skill-tag">Hadoop</span>
-              <span class="skill-tag">Langfuse</span>
             </div>
           </div>
         </div>
@@ -894,36 +770,33 @@
 
     <section id="experience" class="section">
       <div class="container">
-        <h2 class="section-title animate-on-scroll">Work Experience</h2>
-        <div class="animate-on-scroll">
-          <div class="experience-card">
-            <h3>AI Full Stack Intern</h3>
-            <p class="company">DIGITAL WOM PRIVATE LTD</p>
-            <p class="date">Mar 2025 – May 2025 (Remote)</p>
-            <p>
-              Built a B2B lead generation system with interest-based targeting
-              and developed a full-stack multi-agent platform featuring social
-              media integration (LinkedIn/Instagram), content brainstorming, OCR
-              processing, and Neo4j knowledge graph visualization. Created
-              comprehensive AI agent ecosystem with knowledge graph integration
-              for enhanced lead generation and content creation workflows
-            </p>
-          </div>
+        <h2 class="section-title animate-on-scroll">Experience</h2>
+        
+        <div class="glass-card experience-card animate-on-scroll" style="margin-bottom: 2rem;">
+          <h3>AI Full Stack Intern</h3>
+          <p class="company">DIGITAL WOM PRIVATE LTD</p>
+          <p class="date">Mar 2025 – May 2025 (Remote)</p>
+          <p>
+            Built a B2B lead generation system with interest-based targeting
+            and developed a full-stack multi-agent platform featuring social
+            media integration (LinkedIn/Instagram), content brainstorming, OCR
+            processing, and Neo4j knowledge graph visualization. Created
+            comprehensive AI agent ecosystem with knowledge graph integration
+            for enhanced lead generation and content creation workflows.
+          </p>
         </div>
 
-        <div class="animate-on-scroll">
-          <div class="experience-card">
-            <h3>AI Agent Developer Intern</h3>
-            <p class="company">Trioma Health Private Limited (Traze AI)</p>
-            <p class="date">June 2025 – Nov 2025 (Remote)</p>
-            <p>
-              Built a Gemini LLM-powered medical coding system to automatically
-              classify ICD-10, CPT, and HCPCS codes from patient case
-              files,Achieved 92.2% overall accuracy and 98.3% organ-level
-              precision across 2,027 test cases (MedCodex/MedMNIST) using
-              ensemble validation.
-            </p>
-          </div>
+        <div class="glass-card experience-card animate-on-scroll">
+          <h3>AI Agent Developer Intern</h3>
+          <p class="company">Trioma Health Private Limited (Traze AI)</p>
+          <p class="date">June 2025 – Nov 2025 (Remote)</p>
+          <p>
+            Built a Gemini LLM-powered medical coding system to automatically
+            classify ICD-10, CPT, and HCPCS codes from patient case
+            files,Achieved 92.2% overall accuracy and 98.3% organ-level
+            precision across 2,027 test cases (MedCodex/MedMNIST) using
+            ensemble validation.
+          </p>
         </div>
       </div>
     </section>
@@ -932,432 +805,166 @@
       <div class="container">
         <h2 class="section-title animate-on-scroll">Projects</h2>
         <div class="projects-grid">
-          <div class="project-card animate-on-scroll">
+          
+          <div class="glass-card project-card animate-on-scroll">
             <div class="project-header">
               <h3>Microbiome Causality Analysis</h3>
               <p class="project-date">Feb 2025</p>
             </div>
             <div class="project-content">
-              <p>
-                Advanced microbiome causality analysis system for Stanford
-                University combining Granger causality tests to identify causal
-                relationships. Built AI validation pipeline with web scraping
-                and custom deep research workflow to confirm microbiome
-                cause-effect pairs.
-              </p>
+              <p>Advanced microbiome causality analysis system for Stanford University combining Granger causality tests to identify causal relationships. Built AI validation pipeline with web scraping and custom deep research workflow to confirm microbiome cause-effect pairs.</p>
               <div class="project-tech-tags">
                 <span class="project-tech-tag">Python</span>
-                <span class="project-tech-tag">Machine Learning</span>
                 <span class="project-tech-tag">CREWAI</span>
                 <span class="project-tech-tag">PostgreSQL</span>
-                <span class="project-tech-tag">LANGRAPH</span>
-                <span class="project-tech-tag">REACT JS</span>
-                <span class="project-tech-tag">Statistics</span>
-                <span class="project-tech-tag">Web Scraping</span>
+                <span class="project-tech-tag">LANGGRAPH</span>
               </div>
-              <a href="" class="project-github-link" target="_blank">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub (Not Available Due to Some privacy Reasons)
+              <a href="#" class="project-github-link" style="opacity: 0.5; pointer-events: none;">
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Private Repo
               </a>
             </div>
           </div>
 
-          <div class="project-card animate-on-scroll">
+          <div class="glass-card project-card animate-on-scroll">
             <div class="project-header">
-              <h3>NERD - Named Entity Research Dataset</h3>
+              <h3>NERD - Named Entity Dataset</h3>
               <p class="project-date">Dec 2024</p>
             </div>
             <div class="project-content">
-              <p>
-                Built an AI-powered Streamlit application that converts
-                domain-specific research papers into structured datasets using
-                NER pipelines. Leverages Spacy Toolkit and Groq API powered
-                model evaluation to ensure high-quality entity extraction.
-              </p>
+              <p>Built an AI-powered Streamlit application that converts domain-specific research papers into structured datasets using NER pipelines. Leverages Spacy Toolkit and Groq API powered model evaluation to ensure high-quality entity extraction.</p>
               <div class="project-tech-tags">
-                <span class="project-tech-tag">Python</span>
                 <span class="project-tech-tag">NLP</span>
                 <span class="project-tech-tag">Weaviate</span>
                 <span class="project-tech-tag">CREWAI</span>
                 <span class="project-tech-tag">Streamlit</span>
-                <span class="project-tech-tag">LLM</span>
               </div>
-              <a
-                href="https://github.com/DevaRajan8/NERD"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
+              <a href="https://github.com/DevaRajan8/NERD-Redefined" class="project-github-link" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
               </a>
             </div>
           </div>
 
-          <div class="project-card animate-on-scroll">
-            <div class="project-header">
-              <h3>Resume Analyzer</h3>
-              <p class="project-date">Nov 2024</p>
-            </div>
-            <div class="project-content">
-              <p>
-                Developed an AI-powered Streamlit app using spaCy and
-                scikit-learn to parse candidate CVs and match them against job
-                descriptions. Automatically generates ATS-friendly suggestions
-                and scoring.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech-tag">Python</span>
-                <span class="project-tech-tag">spaCy</span>
-                <span class="project-tech-tag">SQL</span>
-                <span class="project-tech-tag">ML</span>
-                <span class="project-tech-tag">Streamlit</span>
-              </div>
-              <a
-                href="https://github.com/DevaRajan8/resume-analyzer"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll">
+          <div class="glass-card project-card animate-on-scroll">
             <div class="project-header">
               <h3>Generative VQA</h3>
               <p class="project-date">Mar 2024</p>
             </div>
             <div class="project-content">
-              <p>
-                A Generative Visual Question Answering model designed to
-                understand images and generate natural language answers.
-                Combines computer vision and NLP to process visual inputs and
-                text-based queries accurately.
-              </p>
+              <p>A Generative Visual Question Answering model designed to understand images and generate natural language answers. Combines computer vision and NLP to process visual inputs and text-based queries accurately.</p>
               <div class="project-tech-tags">
-                <span class="project-tech-tag">Python</span>
                 <span class="project-tech-tag">PyTorch</span>
-                <span class="project-tech-tag">NLP</span>
                 <span class="project-tech-tag">Computer Vision</span>
-                <span class="project-tech-tag">Vision-Language Models</span>
+                <span class="project-tech-tag">VLMs</span>
               </div>
-              <a
-                href="https://github.com/DevaRajan8/Generative-vqa"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
+              <a href="https://github.com/DevaRajan8/Generative-vqa" class="project-github-link" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
               </a>
             </div>
           </div>
 
-          <div class="project-card animate-on-scroll">
+          <div class="glass-card project-card animate-on-scroll">
             <div class="project-header">
-              <h3>EMS-QNN</h3>
-              <p class="project-date">Jan 2024</p>
-            </div>
-            <div class="project-content">
-              <p>
-                An Energy Management System utilizing Quantum Neural Networks
-                for optimized performance and predictions. Explores the
-                intersection of Quantum Machine Learning and advanced energy
-                optimization strategies.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech-tag">Python</span>
-                <span class="project-tech-tag">Quantum ML</span>
-                <span class="project-tech-tag">Qiskit</span>
-                <span class="project-tech-tag">Machine Learning</span>
-                <span class="project-tech-tag">Energy Optimization</span>
-              </div>
-              <a
-                href="https://github.com/DevaRajan8/EMS-QNN"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll">
-            <div class="project-header">
-              <h3>StudyTracker</h3>
-              <p class="project-date">Sep 2024</p>
-            </div>
-            <div class="project-content">
-              <p>
-                Created a modular React + Flask productivity app with
-                personalized study agents powered by LangGraph and CrewAI.
-                Delivers dynamic, adaptive study plans and reminders.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech-tag">React</span>
-                <span class="project-tech-tag">Flask</span>
-                <span class="project-tech-tag">Mongo DB</span>
-                <span class="project-tech-tag">LangGraph</span>
-                <span class="project-tech-tag">CrewAI</span>
-              </div>
-              <a
-                href="https://github.com/DevaRajan8/StudyBuddy"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll">
-            <div class="project-header">
-              <h3>LLM for Hydrogen Storage</h3>
-              <p class="project-date">May 2024</p>
-            </div>
-            <div class="project-content">
-              <p>
-                Built a BART-based chatbot that ingests scientific papers on
-                hydrogen storage and returns concise, on-demand summaries.
-                Extracts and organizes key material properties and trends across
-                multiple papers, boosting research accuracy and throughput.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech-tag">BART</span>
-                <span class="project-tech-tag">NLP</span>
-                <span class="project-tech-tag">Scientific Papers</span>
-                <span class="project-tech-tag">Chatbot</span>
-                <span class="project-tech-tag">LLM</span>
-              </div>
-              <a
-                href="https://github.com/DevaRajan8/LLM-for-hydrogen-storage"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll">
-            <div class="project-header">
-              <h3>GenAI Prem prom Survey System</h3>
+              <h3>RARE with Agentic Retrieval</h3>
               <p class="project-date">May 2025</p>
             </div>
             <div class="project-content">
-              <p>
-                Built an AI-powered automated calling system for Amrita
-                Faridabad Hospital to collect patient feedback on care
-                experience (PREMs) and health outcomes (PROMs) post-discharge.
-                Enables interactive voice surveys with real-time analytics to
-                improve healthcare service quality and patient satisfaction.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech-tag">AI Voice</span>
-                <span class="project-tech-tag">Healthcare</span>
-                <span class="project-tech-tag">Mongo DB</span>
-                <span class="project-tech-tag">Python</span>
-                <span class="project-tech-tag">LLM</span>
-                <span class="project-tech-tag">Langraph</span>
-              </div>
-              <a href="" class="project-github-link" target="_blank">
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub (Not Available Due to Some privacy Reasons)
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll">
-            <div class="project-header">
-              <h3>KNOWLEDGE GRAPH GENERATOR</h3>
-              <p class="project-date">Apr 2025</p>
-            </div>
-            <div class="project-content">
-              <p>
-                Developed an automated knowledge graph generation tool that
-                fetches domain-specific data from Wikidata and Wikipedia using
-                SPARQL queries, creating comprehensive relationship maps between
-                topics and concepts. Built with async processing, MongoDB
-                storage, and Redis caching to efficiently handle large-scale
-                data retrieval and graph construction for educational content
-                organization.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech-tag">SPARQL</span>
-                <span class="project-tech-tag">MongoDB</span>
-                <span class="project-tech-tag">Redis</span>
-                <span class="project-tech-tag">NEO4J</span>
-              </div>
-              <a
-                href="https://github.com/DevaRajan8/KnowledgeGraph_Generator"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.30.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </div>
-
-          <div class="project-card animate-on-scroll">
-            <div class="project-header">
-              <h3>RARE with Agentic Retrieval System</h3>
-              <p class="project-date">May 2025</p>
-            </div>
-            <div class="project-content">
-              <p>
-                Built an advanced RAG system combining chain-of-thought
-                reasoning (RARE) with intelligent multi-strategy retrieval
-                capabilities for document-based question answering. Features
-                dynamic knowledge base routing, multiple retrieval modes
-                (chunks, metadata, content-based), and ChromaDB vector storage
-                with Groq API integration for enhanced response generation.
-              </p>
+              <p>Advanced RAG system combining chain-of-thought reasoning (RARE) with intelligent multi-strategy retrieval capabilities for document-based QA. Features dynamic knowledge base routing and ChromaDB vector storage.</p>
               <div class="project-tech-tags">
                 <span class="project-tech-tag">RAG</span>
                 <span class="project-tech-tag">ChromaDB</span>
                 <span class="project-tech-tag">Groq API</span>
-                <span class="project-tech-tag">Chain-of-Thought</span>
               </div>
-              <a
-                href="https://github.com/DevaRajan8/RARE_with_Agentic_Retrieval_System-Deepseek"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
+              <a href="https://github.com/DevaRajan8/RARE_with_Agentic_Retrieval_System-Deepseek" class="project-github-link" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
               </a>
             </div>
           </div>
 
-          <div class="project-card animate-on-scroll">
+          <div class="glass-card project-card animate-on-scroll">
             <div class="project-header">
               <h3>Agent-Protocol-Bridge</h3>
               <p class="project-date">May 2025</p>
             </div>
             <div class="project-content">
-              <p>
-                Created a universal integration framework that bridges MCP
-                tools, A2A agents, and LangChain components into unified AI
-                workflows with seamless interoperability. Features automatic
-                agent discovery, multi-threaded server management, and dynamic
-                protocol conversion enabling cross-framework tool integration
-                and workflow orchestration.
-              </p>
+              <p>Universal integration framework bridging MCP tools, A2A agents, and LangChain components into unified AI workflows. Features automatic agent discovery and dynamic protocol conversion.</p>
               <div class="project-tech-tags">
                 <span class="project-tech-tag">MCP</span>
                 <span class="project-tech-tag">LangChain</span>
-                <span class="project-tech-tag">A2A</span>
-                <span class="project-tech-tag">Langraph</span>
-                <span class="project-tech-tag">Multi-threading</span>
+                <span class="project-tech-tag">LangGraph</span>
               </div>
-              <a
-                href="https://github.com/DevaRajan8/Agent-Protocol-Bridge"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
+              <a href="https://github.com/DevaRajan8/Agent-Protocol-Bridge" class="project-github-link" target="_blank">
+                <svg viewBox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+                Source Code
               </a>
             </div>
           </div>
 
-          <div class="project-card animate-on-scroll">
-            <div class="project-header">
-              <h3>SkinCheck - Skin Lesion Classifier</h3>
-              <p class="project-date">Mar 2025</p>
-            </div>
-            <div class="project-content">
-              <p>
-                Developed a React Native application that captures skin lesion
-                images and classifies them on-device using custom deep-learning
-                models. Integrated real-time preprocessing and inference
-                pipelines to deliver accurate melanoma vs. benign predictions.
-              </p>
-              <div class="project-tech-tags">
-                <span class="project-tech-tag">React Native</span>
-                <span class="project-tech-tag">TensorFlow</span>
-                <span class="project-tech-tag">Computer Vision</span>
-                <span class="project-tech-tag">Deep Learning</span>
-              </div>
-              <a
-                href="https://github.com/DevaRajan8/Skin-Lesion-Classification"
-                class="project-github-link"
-                target="_blank"
-              >
-                <svg viewBox="0 0 24 24">
-                  <path
-                    d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"
-                  />
-                </svg>
-                GitHub
-              </a>
-            </div>
-          </div>
         </div>
+      </div>
+    </section>
+
+    <section id="publications" class="section">
+      <div class="container">
+        <h2 class="section-title animate-on-scroll">Publications</h2>
+        
+        <div class="glass-card publication-card animate-on-scroll">
+          <div class="pub-header">
+            <span class="pub-badge pub-venue">IEEE</span>
+            <span class="pub-badge pub-year">2026</span>
+            <span class="pub-badge pub-status">Published</span>
+          </div>
+          
+          <h3>Design and Implementation of an Autonomous Self-Controlled Delivery Robot with an OTP-Based Secure Delivery</h3>
+          
+          <p class="pub-authors">
+            <strong>Authors:</strong> Devarajan S
+          </p>
+          
+          <p class="pub-desc">
+            This paper presents the design and implementation of a self-controlled delivery robot designed for autonomous navigation and secure last-mile delivery. The system utilizes GPS-based positioning along with an A* path planning algorithm to determine an optimal path to the target location. Computer vision methods alongside a forward-facing HD camera provide lane keeping and real-time obstacle detection by employing a YOLOv8 model. Hazards on the road initiate a local bypass procedure to realign its trajectory dynamically. During delivery, the system requests a one-time password (OTP) from the receiver, which will activate an onboard lock mechanism for the release of the parcel.
+          </p>
+          
+          <div class="project-tech-tags" style="margin-bottom: 2rem;">
+            <span class="project-tech-tag">Delivery Robot</span>
+            <span class="project-tech-tag">Autonomous Navigation</span>
+            <span class="project-tech-tag">Path Planning</span>
+            <span class="project-tech-tag">Obstacle Avoidance</span>
+            <span class="project-tech-tag">Computer Vision</span>
+            <span class="project-tech-tag">YOLOv8</span>
+          </div>
+          
+          <a href="https://ieeexplore.ieee.org/document/11409157" class="project-github-link" target="_blank" style="background: transparent; border-color: var(--accent-primary); color: var(--accent-primary);">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
+              <polyline points="14 2 14 8 20 8"></polyline>
+              <line x1="16" y1="13" x2="8" y2="13"></line>
+              <line x1="16" y1="17" x2="8" y2="17"></line>
+              <polyline points="10 9 9 9 8 9"></polyline>
+            </svg>
+            View on IEEE Xplore
+          </a>
+        </div>
+
       </div>
     </section>
 
     <section id="courses" class="section">
       <div class="container">
-        <h2 class="section-title animate-on-scroll">Courses & Certificates</h2>
+        <h2 class="section-title animate-on-scroll">Certificates</h2>
         <div class="courses-list">
-          <div class="course-item animate-on-scroll">
+          <div class="glass-card course-item animate-on-scroll">
             <h4>Supervised Machine Learning: Regression and Classification</h4>
             <p class="course-provider">DeepLearning.AI (Coursera)</p>
           </div>
-          <div class="course-item animate-on-scroll">
+          <div class="glass-card course-item animate-on-scroll">
             <h4>Generative AI and LLM Fundamentals</h4>
             <p class="course-provider">Google</p>
           </div>
-          <div class="course-item animate-on-scroll">
+          <div class="glass-card course-item animate-on-scroll">
             <h4>AWS Cloud Engineer</h4>
             <p class="course-provider">Amrita University Coimbatore</p>
           </div>
@@ -1367,37 +974,40 @@
 
     <footer id="contact">
       <div class="container">
+        <div class="logo" style="justify-content: center; margin-bottom: 2.5rem;">Devarajan_S</div>
         <div class="footer-content">
-          <a href="mailto:devarajan8.official@gmail.com" class="footer-link"
-            >Email</a
-          >
+          <a href="mailto:devarajan8.official@gmail.com" class="footer-link">Email</a>
           <a href="tel:8807926810" class="footer-link">Phone</a>
           <a href="https://github.com/DevaRajan8" class="footer-link">GitHub</a>
-          <a href="https://www.linkedin.com/in/devarajan8" class="footer-link"
-            >LinkedIn</a
-          >
+          <a href="https://www.linkedin.com/in/devarajan8" class="footer-link">LinkedIn</a>
         </div>
-        <p>&copy; 2025 Devarajan S. All rights reserved.</p>
+        <p style="font-family: var(--font-mono); font-size: 0.85rem; opacity: 0.6;">
+          &copy; 2026 Devarajan S. All systems nominal.
+        </p>
       </div>
     </footer>
 
     <script>
-      // Particle system
+      // Particle System Initialization
       function createParticles() {
         const particlesContainer = document.getElementById("particles");
-        const particleCount = 50;
+        const particleCount = 40;
 
         for (let i = 0; i < particleCount; i++) {
           const particle = document.createElement("div");
           particle.classList.add("particle");
           particle.style.left = Math.random() * 100 + "%";
-          particle.style.animationDelay = Math.random() * 15 + "s";
-          particle.style.animationDuration = Math.random() * 10 + 10 + "s";
+          
+          // Using a subtle tech blue for particles to match the grid
+          particle.style.background = '#00f0ff';
+          
+          particle.style.animationDelay = Math.random() * 20 + "s";
+          particle.style.animationDuration = Math.random() * 15 + 15 + "s";
           particlesContainer.appendChild(particle);
         }
       }
 
-      // Smooth scrolling for navigation links
+      // Smooth scrolling
       document.querySelectorAll('a[href^="#"]').forEach((anchor) => {
         anchor.addEventListener("click", function (e) {
           e.preventDefault();
@@ -1411,7 +1021,7 @@
         });
       });
 
-      // Scroll animations
+      // Intersection Observer for animations
       const observerOptions = {
         threshold: 0.1,
         rootMargin: "0px 0px -50px 0px",
@@ -1429,7 +1039,7 @@
         observer.observe(el);
       });
 
-      // Active navigation highlighting
+      // Active navigation link highlighting
       window.addEventListener("scroll", () => {
         const sections = document.querySelectorAll("section");
         const navLinks = document.querySelectorAll(".nav-links a");
@@ -1438,7 +1048,7 @@
         sections.forEach((section) => {
           const sectionTop = section.offsetTop;
           const sectionHeight = section.clientHeight;
-          if (scrollY >= sectionTop - 200) {
+          if (scrollY >= sectionTop - 250) {
             current = section.getAttribute("id");
           }
         });
@@ -1451,19 +1061,8 @@
         });
       });
 
-      // Initialize particles
+      // Init
       createParticles();
-
-      // Add some interactive effects
-      document.querySelectorAll(".skill-tag").forEach((tag) => {
-        tag.addEventListener("mouseenter", function () {
-          this.style.transform = "scale(1.1) rotate(5deg)";
-        });
-
-        tag.addEventListener("mouseleave", function () {
-          this.style.transform = "scale(1) rotate(0deg)";
-        });
-      });
     </script>
   </body>
 </html>
